@@ -28,4 +28,4 @@ class MutualfundList(admin.ModelAdmin):
 admin.site.register(Customer, CustomerList)
 admin.site.register(Investment, InvestmentList)
 admin.site.register(Stock, StockList)
-
+admin.site.register(Mutualfund,MutualfundList)
