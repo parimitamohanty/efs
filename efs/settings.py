@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'portfolio',
     'crispy_forms',
-    'reportlab'
 ]
 
 MIDDLEWARE = [
