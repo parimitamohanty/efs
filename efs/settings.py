@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -78,10 +79,10 @@ WSGI_APPLICATION = 'efs.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'deof41ic2986ud',
-        'USER': 'vuqzbdwqlqedjw',
-        'PASSWORD': 'f9f05db7bb1c6d770e41edf18513c616e608c644f37b4e60c5268d41da7dd65d',
-        'HOST': 'ec2-54-83-50-174.compute-1.amazonaws.com',
+        'NAME': 'd1ak4rogf37b0b',
+        'USER': 'cvbucvmozocvne',
+        'PASSWORD': '82b0de95464f5f7a38b509fc1fc05da59ad41e297993dd7f0c22e6862c9869e2',
+        'HOST': 'ec2-54-243-223-245.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -119,13 +120,14 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/dev/howto/static-files/
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
@@ -145,8 +147,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 EMAIL_HOST = 'smtp.mailtrap.io'
-EMAIL_HOST_USER = 'parimita.mohanty1295@gmail.com'
-EMAIL_HOST_PASSWORD =''
+EMAIL_HOST_USER = 'YOUR HOST USER'
+EMAIL_HOST_PASSWORD = 'YOUR HOST PASSWORD'
 EMAIL_PORT = 2525
 #EMAIL_USE_TLS = True
 
@@ -155,4 +157,3 @@ try:
     from .local_settings import *
 except ImportError:
     pass
-
