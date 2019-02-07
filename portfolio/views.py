@@ -8,6 +8,9 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 from django.db.models import Sum
 
+from django.http import HttpResponseRedirect
+
+
 
 now = timezone.now()
 def home(request):
@@ -219,3 +222,39 @@ def portfolio(request,pk):
    return render(request, 'portfolio/portfolio.html', {'customers': customers, 'investments': investments,
                                                       'stocks': stocks, 'mutualfunds': mutualfunds,
                                                       'sum_acquired_value': sum_acquired_value,})
+
+@login_required()
+def register(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            user = User.objects.create_user(username=form.cleaned_data['username'],
+                                            password=form.cleaned_data['password1'],
+                                            email=form.cleaned_data['email'])
+            #return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/register/success/')
+    else:
+        form = RegistrationForm()
+    return render(request, 'registration/register.html', {'form': form})
+
+
+def register_success(request):
+    return render(request, 'registration/success.html',  )
+
+
+def password_reset(request):
+    return render(request, 'home/password_reset.html',
+    {'home': password_reset})
+
+
+def password_reset_confirm(request):
+    return render(request, 'home/password_reset_confirm.html',
+    {'home': password_reset_confirm})
+
+def password_reset_email(request):
+    return render(request, 'home/password_reset_email.html',
+    {'home': password_reset_email})
+
+def password_reset_complete(request):
+    return render(request, 'home/password_reset_complete.html',
+    {'home': password_reset_complete})

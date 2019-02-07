@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^mutualfund/(?P<pk>\d+)/delete/$', views.mutualfund_delete, name='mutualfund_delete'),
     url(r'^mutualfund/(?P<pk>\d+)/edit/$', views.mutualfund_edit, name='mutualfund_edit'),
     url(r'^mutualfund/create/$', views.mutualfund_new, name='mutualfund_new'),
-
+    url(r'^register/$', views.register, name='register'),
+    url(r'^register/success/$', views.register_success, name='success'),
 
 ]

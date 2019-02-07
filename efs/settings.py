@@ -25,7 +25,16 @@ SECRET_KEY = '89_@)txe)b+m-%ep1cq7bli=*drrbtg&1k+&&w%9p8pew&2*!0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+if DEBUG:
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_HOST_USER = 'parimita.mohanty1295@gmail.com'
+    EMAIL_HOST_PASSWORD = 'qwerty95'
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+    DEFAULT_FROM_EMAIL = 'parimita.mohanty1295@gmail.com'
+
+
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -38,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'portfolio',
+    'mathfilters',
     'crispy_forms',
 ]
 
