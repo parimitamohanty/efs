@@ -34,7 +34,7 @@ if DEBUG:
     DEFAULT_FROM_EMAIL = 'parimita.mohanty1295@gmail.com'
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
