@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'portfolio',
     'mathfilters',
     'crispy_forms',
+    'rest_framework',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [

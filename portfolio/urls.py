@@ -1,6 +1,7 @@
 from django.conf.urls import url
 from . import views
 from django.urls import path
+from rest_framework.urlpatterns import format_suffix_patterns
 
 
 app_name = 'portfolio'
@@ -25,5 +26,7 @@ urlpatterns = [
     url(r'^mutualfund/create/$', views.mutualfund_new, name='mutualfund_new'),
     url(r'^register/$', views.register, name='register'),
     url(r'^register/success/$', views.register_success, name='success'),
-
+    url(r'^customers_json/', views.CustomerList.as_view()),
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)

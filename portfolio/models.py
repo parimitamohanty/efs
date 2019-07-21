@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+import requests
 
 
 
@@ -71,6 +72,20 @@ class Stock(models.Model):
     def initial_stock_value(self):
         return self.shares * self.purchase_price
 
+    def current_stock_price(self):
+        symbol_f = str(self.symbol)
+        main_api = 'https://www.alphavantage.co/query?function=BATCH_STOCK_QUOTES&symbols='
+        api_key = '&apikey= 0LPXWOSINTW7RE01'
+        url = main_api + symbol_f + api_key
+        json_data = requests.get(url).json()
+        open_price = float(json_data["Stock Quotes"][0]["2. price"])
+        share_value = open_price
+        return share_value
+
+    def current_stock_value(self):
+        return float(self.current_stock_price()) * float(self.shares)
+
+
 class Mutualfund(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='mutualfunds')
     category = models.CharField(max_length=50)
@@ -93,3 +108,4 @@ class Mutualfund(models.Model):
 
     def results_by_mutualfund(self):
         return self.recent_value - self.acquired_value
+
